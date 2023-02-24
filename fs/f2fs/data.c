@@ -55,11 +55,11 @@ static inline struct bio *__f2fs_bio_alloc(gfp_t gfp_mask,
 	return bio_alloc_bioset(gfp_mask, nr_iovecs, &f2fs_bioset);
 }
 
-struct bio *f2fs_bio_alloc(struct f2fs_sb_info *sbi, int npages, bool noio)
+/*struct bio *f2fs_bio_alloc(struct f2fs_sb_info *sbi, int npages, bool noio)
 {
 	if (noio) {
 		/* No failure on bio allocation */
-		return __f2fs_bio_alloc(GFP_NOIO, npages);
+	/*	return __f2fs_bio_alloc(GFP_NOIO, npages);
 	}
 
 	if (time_to_inject(sbi, FAULT_ALLOC_BIO)) {
@@ -68,7 +68,7 @@ struct bio *f2fs_bio_alloc(struct f2fs_sb_info *sbi, int npages, bool noio)
 	}
 
 	return __f2fs_bio_alloc(GFP_KERNEL, npages);
-}
+}*/
 
 static bool __is_cp_guaranteed(struct page *page)
 {
